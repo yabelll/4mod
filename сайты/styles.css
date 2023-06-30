@@ -1,3 +1,50 @@
 h1 {
-    background: red;
+    background: rgba(246, 153, 106, 0.678);
 }
+
+.paragraph-1 {
+    background: bisque;
+    font-size: 30pt;
+    color: white;
+}
+
+.p-2 {
+    font-size: 36pt;
+    border: 10px solid black; /* solid - что единая рамка */
+    border-radius: 5px;
+    margin-bottom: 60px;
+    margin-left: 700px;
+    margin-right: 700px;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.p-3 {
+    background: rgba(27, 173, 231, 0.615);
+    font-size: 24pt;
+    color: rgb(0, 0, 0);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.p-4 {
+    text-align: center;
+    font-size: 24pt;
+    font-style: italic;
+    box-shadow: inset 0 0 2px 2px green;
+}
+
+
+
+
+
+/* 
+background: ;
+font-size: ;
+color: ;
+border: ;
+border-radius: ;
+font-weight: ;
+font-family: ;
+margin: ;
+padding: ;
+*/

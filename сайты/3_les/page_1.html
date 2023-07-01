@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Главная</title>
+</head>
+
+<body>
+    <h1>Наш сайт очень крутой!</h1>
+    <form action="">
+        <label for="textfield" class="lead">Логин</label>
+        <input class="form-control" type="text" placeholder="Логин" id="textfield"><br> <!-- br - переносит на строчку вниз -->
+        <label for="passfield" class="lead">Пароль</label>
+        <input class="form-control" type="password" placeholder="Пароль" id="passfield"><br>
+        <div class="form-check form-switch"> <!-- Класс для группировки функций -->
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" id="checkfield">
+            <label for="checkfield" class="lead">Вы согласны с нами?</label><br> <!-- span не переносит нас на следующую строку, label тоже, но для форм лучше label -->
+        </div>
+        <button type="button" class="btn btn-outline-primary">Войти</button><br>
+        <input type="button"  value="Войти">
+    </form>
+    <a href="page_2.html" class="lead">Добро пожаловать ко мне на сайт</a> <!-- Переход на страницу 2 -->
+</body>
+
+</html>

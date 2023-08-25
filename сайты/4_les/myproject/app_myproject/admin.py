@@ -2,10 +2,16 @@ from django.contrib import admin
 from .models import Advertisements
 
 class AdvertisementAdmin(admin.ModelAdmin):
-    list_display = ["id", "title", "description", "price", "created_at", "auction"]
+    list_display = ["id", "title", "description", "price", "created_date", "updated_date", "auction"]
     list_filter = ["auction", "created_at"]
     actions = ["make_auction_as_False", "make_auction_as_True"]
-
+    fieldsets = (
+                ("Общие", {"fields": ("title", "description")}), 
+                ("Финансы", {
+                    "fields": ("price", "auction"),
+                    "classes": ["collapse"]
+                    })
+    )
 
     @admin.action(description="Убрать возможность торга")
     def make_auction_as_False(self, request, queryset):
@@ -16,5 +22,3 @@ class AdvertisementAdmin(admin.ModelAdmin):
         queryset.update(auction = True)
 
 admin.site.register(Advertisements, AdvertisementAdmin)
-
-# Register your models here.

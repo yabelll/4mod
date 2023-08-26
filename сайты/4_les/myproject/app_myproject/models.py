@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib import admin
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class Advertisements(models.Model):
     title = models.CharField("Заголовок", max_length=128)
@@ -11,6 +14,8 @@ class Advertisements(models.Model):
     db_table = 'advertisements'
     def __str__(self): 
         return f'<Advertisement: Advertisement(id={self.id}, title={self.title}, price={self.price})>'
+    user = models.ForeignKey(User, verbose_name="Пользователь", on_delete=models.CASCADE)
+    image = models.ImageField("Изображение", upload_to="advertisements/")
 
     @admin.display(description="Дата создания")
     def created_date(self):

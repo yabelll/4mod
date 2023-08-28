@@ -16,11 +16,10 @@ def advertisements_post(request):
         form = AdvertisementForm(request.POST, request.FILES)
         if form.is_valid():
             advertisements = Advertisements(**form.cleaned_data)
-            advertisements.user = request.user
-            advertisements.save()
+            form.user = request.user
+            form.save()
             url = reverse('main-page')
             return redirect(url)
     else:
         form = AdvertisementForm()
-    context = {'form': form}
-    return render(request, 'advertisement-post.html', context)
+    return render(request, 'advertisement-post.html', {'form': form})

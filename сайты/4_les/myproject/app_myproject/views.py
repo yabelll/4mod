@@ -16,7 +16,7 @@ def advertisements_post(request):
         form = AdvertisementForm(request.POST, request.FILES)
         if form.is_valid():
             advertisements = Advertisements(**form.cleaned_data)
-            form.user = request.user
+            advertisements.user_id = request.user
             form.save()
             url = reverse('main-page')
             return redirect(url)

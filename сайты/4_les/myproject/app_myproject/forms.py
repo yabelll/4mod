@@ -1,6 +1,6 @@
 from django import forms
 from django.db import models
-from django.forms import ModelForm, Textarea, TextInput, NumberInput, CheckboxInput, FileInput
+from django.forms import Textarea, TextInput, NumberInput, CheckboxInput, FileInput
 
 class Advertisement(models.Model):
     title = models.CharField(max_length=64)

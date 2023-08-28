@@ -15,7 +15,7 @@ class Advertisements(models.Model):
     def __str__(self): 
         return f'<Advertisement: Advertisement(id={self.id}, title={self.title}, price={self.price})>'
     image = models.ImageField("Изображение", upload_to="advertisements/")
-    user = models.ForeignKey(User, verbose_name="Пользователь", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, verbose_name="Пользователь", on_delete=models.CASCADE, null=True)
 
     @admin.display(description="Дата создания")
     def created_date(self):

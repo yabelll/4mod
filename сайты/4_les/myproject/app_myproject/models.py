@@ -11,7 +11,7 @@ class Advertisements(models.Model):
     auction = models.BooleanField("Торг", help_text="Отметьте, если будет уместен торг")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    db_table = 'advertisements'
+    db_table = 'advertisement'
     def __str__(self): 
         return f'<Advertisement: Advertisement(id={self.id}, title={self.title}, price={self.price})>'
     image = models.ImageField("Изображение", upload_to="advertisements/")

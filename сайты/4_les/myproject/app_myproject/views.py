@@ -6,21 +6,21 @@ from .forms import AdvertisementForm
 def index(request):
     advertisements = Advertisements.objects.all()
     context = {"advertisements": advertisements}
-    return render(request, 'index.html', context)
+    return render(request, 'app_advertisements/index.html', context)
 
 def top_sellers(request):
-    return render(request, 'top-sellers.html')
+    return render(request, 'app_advertisements/top-sellers.html')
 
 def advertisements_post(request):
     if request.method == "POST":
         form = AdvertisementForm(request.POST, request.FILES)
         if form.is_valid():
             advertisements = Advertisements(**form.cleaned_data)
-            advertisements.user_id = request.user
-            form.save()
+            advertisements.user = request.user
+            advertisements.save()
             url = reverse('main-page')
             return redirect(url)
     else:
         form = AdvertisementForm()
-        context = {'form': form}
-    return render(request, 'advertisement-post.html', context)
+    context = {'form': form}
+    return render(request, 'app_advertisements/advertisement-post.html', context)

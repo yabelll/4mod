@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib import admin
 from django.contrib.auth import get_user_model
+from django.urls import reverse
 
 User = get_user_model()
 
@@ -13,7 +14,7 @@ class Advertisements(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     db_table = 'advertisement'
     def __str__(self): 
-        return f'<Advertisement: Advertisement(id={self.id}, title={self.title}, price={self.price})>'
+        return f'Advertisement: Advertisement(id={self.id}, title={self.title}, price={self.price})'
     image = models.ImageField("Изображение", upload_to="advertisements/")
     user = models.ForeignKey(User, verbose_name="Пользователь", on_delete=models.CASCADE, null=True)
 
@@ -38,3 +39,6 @@ class Advertisements(models.Model):
                 '<span style="color: green; font-weight: bold">Сегодня в {} </span>', updated_time
             )
         return self.updated_at.strftime("%d.%m.%Y в %H:%M:%S")
+    
+    def get_absolute_url(self):
+        return reverse('adv-detail', kwargs={'pk': self.pk})

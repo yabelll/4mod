@@ -25,5 +25,16 @@ def logout_view(request):
     logout(request)
     return redirect(reverse('login'))
 
-def register_view(request): 
-    return render(request, '/') 
+def register_view(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('/')
+    else:
+        form = UserCreationForm()
+    return render(request, 'app_auth/register.html', {'form': form})

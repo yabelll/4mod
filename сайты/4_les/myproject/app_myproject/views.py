@@ -4,6 +4,7 @@ from .models import Advertisements, User
 from .forms import AdvertisementForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
+from django.core.exceptions import ValidationError
 
 def index(request):
     title = request.GET.get('query')
@@ -26,9 +27,14 @@ def advertisements_post(request):
         if form.is_valid():
             advertisements = Advertisements(**form.cleaned_data)
             advertisements.user = request.user
+            title = form.cleaned_data['title']
+            if title[0] == '?':
+                raise ValidationError("Нельзя со знака вопроса")
             advertisements.save()
             url = reverse('main-page')
             return redirect(url)
+
+            
     else:
         form = AdvertisementForm()
     context = {'form': form}

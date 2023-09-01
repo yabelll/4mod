@@ -147,9 +147,13 @@
           </div>
         </li>
       </ul>
-      <form class="d-flex my-2 my-lg-0">
-        <input class="form-control me-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      <form class="d-flex my-2 my-lg-0" method="get">
+        <div class="col-auto w-50">
+          <input name='query' value='{% if title %}{{ title }}{% endif %}' type="text" class="form-control me-sm-2" placeholder="Search">
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-outline-light my-2 my-sm-0">Search</button>
+        </div>
       </form>
     </div>
   </nav>

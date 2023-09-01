@@ -34,7 +34,7 @@ def advertisements_post(request):
             url = reverse('main-page')
             return redirect(url)
 
-            
+          
     else:
         form = AdvertisementForm()
     context = {'form': form}
